@@ -6,8 +6,7 @@ import Nav from '../components/Nav'
 import RequestedVideos from '../components/RequestedVideos'
 import fetchRequestsObject from '../utils/requests'
 
-export default function Home(props) {
-  console.log(props.results);
+export default function Home({results}) {
   return (
     <div className=''>
       <Head>
@@ -22,7 +21,7 @@ export default function Home(props) {
         {/* Categories Nav */}
         <Nav />
         {/* Content Grid */}
-        <RequestedVideos />
+        <RequestedVideos results={results}/>
       </main>
     </div>
   )

@@ -1,6 +1,12 @@
-const RequestedVideos = () => {
+import Thumbnail from "./Thumbnail"
+
+const RequestedVideos = ({results}) => {
   return (
-    <div>RequestedVideos</div>
+    <div>
+      {results.map(result => {
+        return <Thumbnail key={result.id} result={result}/>
+      })}
+    </div>
   )
 }
 
