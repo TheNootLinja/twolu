@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import Header from '../components/Header'
 import Nav from '../components/Nav'
+import RequestedVideos from '../components/RequestedVideos'
 
 export default function Home() {
   return (
@@ -19,7 +20,14 @@ export default function Home() {
         {/* Categories Nav */}
         <Nav />
         {/* Content Grid */}
+        <RequestedVideos />
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const requestedGenre = context.query.genre;
+
+  
 }
