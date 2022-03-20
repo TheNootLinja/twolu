@@ -3,8 +3,10 @@ import Image from 'next/image'
 
 import Header from '../components/Header'
 import Nav from '../components/Nav'
+import RequestedVideos from '../components/RequestedVideos'
+import fetchRequestsObject from '../utils/requests'
 
-export default function Home() {
+export default function Home({results}) {
   return (
     <div className=''>
       <Head>
@@ -19,7 +21,20 @@ export default function Home() {
         {/* Categories Nav */}
         <Nav />
         {/* Content Grid */}
+        <RequestedVideos results={results}/>
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const requestedGenre = context.query.genre;
+
+  const request = await fetch(
+    `https://api.themoviedb.org/3${fetchRequestsObject[requestedGenre]?.url || 
+    fetchRequestsObject.fetchTrending.url}`
+    ).then(res => res.json());
+    return {
+      props: request,
+    }
 }
