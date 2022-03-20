@@ -1,15 +1,16 @@
 import Image from 'next/image'
 import { ThumbUpIcon } from '@heroicons/react/outline'
+import { forwardRef } from 'react';
 
-const Thumbnail = ({result}) => {
+const Thumbnail = ({result}, ref) => {
   const BASE_PHOTO_URL = 'https://image.tmdb.org/t/p/original/'
 
   return (
-    <div className='group cursor-pointer'>
+    <div className='group cursor-pointer p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
       <Image 
       layout='responsive'
-      height={1080}
-      width={1920}
+      height={720}
+      width={1280}
       src={
         `${BASE_PHOTO_URL}${result.backdrop_path || result.poster_path}` || `${BASE_PHOTO_URL}${result.poster_path}`
       }
@@ -26,6 +27,6 @@ const Thumbnail = ({result}) => {
       </div>
     </div>
   )
-}
+};
 
 export default Thumbnail
